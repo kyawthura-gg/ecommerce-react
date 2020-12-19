@@ -34,8 +34,9 @@ const ProfileScreen = ({ match, history }) => {
       history.push("/login");
     } else {
       if (!user || !user.name || success) {
+        const userId = userInfo.user.id;
         dispatch({ type: USER_UPDATE_PROFILE_RESET });
-        dispatch(getUserDetails("profile"));
+        dispatch(getUserDetails(userId));
         dispatch(listMyOrders());
       } else {
         setName(user.name);
