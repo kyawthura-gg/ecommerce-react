@@ -6,6 +6,13 @@ import Header from "./components/Header";
 import HomeScreen from "./pages/HomeScreen";
 import ProductScreen from "./pages/ProductScreen";
 import CartScreen from "./pages/CartScreen";
+import LoginScreen from "./pages/LoginScreen";
+import RegisterScreen from "./pages/RegisterScreen";
+import ProfileScreen from "./pages/ProfileScreen";
+import ShippingScreen from "./pages/ShippingScreen";
+import PaymentScreen from "./pages/PaymentScreen";
+import PlaceOrder from "./pages/PlaceOrder";
+import OrderScreen from "./pages/OrderScreen";
 
 function App() {
   return (
@@ -14,6 +21,13 @@ function App() {
         <Header />
         <main className="py-3">
           <Container>
+            <Route path="/order/:id" component={OrderScreen} />
+            <Route path="/placeorder" component={PlaceOrder} />
+            <Route path="/shipping" component={ShippingScreen} />
+            <Route path="/payment" component={PaymentScreen} />
+            <Route path="/profile" component={ProfileScreen} />
+            <Route path="/register" component={RegisterScreen} />
+            <Route path="/login" component={LoginScreen} />
             <Route path="/cart/:slug?" component={CartScreen} />
             <Route path="/product/:slug" component={ProductScreen} />
             <Route path="/" component={HomeScreen} exact />

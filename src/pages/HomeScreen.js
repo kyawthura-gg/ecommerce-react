@@ -4,7 +4,6 @@ import { Col, Row } from "react-bootstrap";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { listProducts } from "../actions/productActions";
-import { Link } from "react-router-dom";
 import Product from "../components/Product";
 
 const HomeScreen = () => {
