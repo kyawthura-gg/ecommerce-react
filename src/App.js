@@ -34,6 +34,13 @@ function App() {
             <Route path="/login" component={LoginScreen} />
             <Route path="/cart/:slug?" component={CartScreen} />
             <Route path="/product/:slug" component={ProductScreen} />
+            <Route path="/search/:keyword" component={HomeScreen} exact />
+            <Route path="/page/:pageNumber" component={HomeScreen} exact />
+            <Route
+              path="/search/:keyword/page/:pageNumber"
+              component={HomeScreen}
+              exact
+            />
             <Route path="/" component={HomeScreen} exact />
           </Container>
         </main>
