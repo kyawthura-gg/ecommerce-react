@@ -19,7 +19,6 @@ const HomeScreen = ({ match }) => {
 
   useEffect(() => {
     dispatch(listProducts(keyword, pageNumber));
-    console.log(productList);
   }, [dispatch, keyword, pageNumber]);
 
   return (
