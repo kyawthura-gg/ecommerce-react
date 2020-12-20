@@ -17,7 +17,7 @@ import {
 } from "../constants/orderConstants";
 
 const OrderScreen = ({ match, history }) => {
-  const orderId = match.params.id;
+  const orderId = Number(match.params.id);
 
   const [sdkReady, setSdkReady] = useState(false);
 
