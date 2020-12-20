@@ -6,13 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import { getUserDetails, updateUser } from "../../actions/userActions";
-import {
-  USER_DETAILS_RESET,
-  USER_UPDATE_RESET,
-} from "../../constants/userConstants";
+import { USER_UPDATE_RESET } from "../../constants/userConstants";
 
 const UserEditScreen = ({ match, history }) => {
-  const userId = match.params.id;
+  const userId = Number(match.params.id);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -35,7 +32,9 @@ const UserEditScreen = ({ match, history }) => {
       dispatch({ type: USER_UPDATE_RESET });
       history.push("/admin/userlist");
     } else {
-      if (!user.name || user.id != userId) {
+      if (!user.name || user.id !== userId) {
+        console.log(typeof user.id);
+        console.log(typeof userId);
         dispatch(getUserDetails(userId));
       } else {
         setName(user.name);
