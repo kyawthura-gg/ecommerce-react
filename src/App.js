@@ -15,6 +15,7 @@ import PlaceOrder from "./pages/PlaceOrder";
 import OrderScreen from "./pages/OrderScreen";
 import UserListScreen from "./pages/admin/UserListScreen";
 import UserEditScreen from "./pages/admin/UserEditScreen";
+import ProductListScreen from "./pages/admin/ProudctListScreen";
 
 function App() {
   return (
@@ -34,6 +35,11 @@ function App() {
             <Route path="/login" component={LoginScreen} />
             <Route path="/cart/:slug?" component={CartScreen} />
             <Route path="/product/:slug" component={ProductScreen} />
+            <Route
+              path="/admin/productlist"
+              component={ProductListScreen}
+              exact
+            />
             <Route path="/search/:keyword" component={HomeScreen} exact />
             <Route path="/page/:pageNumber" component={HomeScreen} exact />
             <Route
