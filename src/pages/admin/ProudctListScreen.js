@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import Paginate from "../../components/Paginate";
-import { deleteProduct, listProducts } from "../../actions/productActions";
+import {
+  deleteProduct,
+  listProducts,
+  createProduct,
+} from "../../actions/productActions";
 import { PRODUCT_CREATE_RESET } from "../../constants/productConstants";
 
 const ProductListScreen = ({ history, match }) => {
@@ -35,14 +39,14 @@ const ProductListScreen = ({ history, match }) => {
   } = productCreate;
 
   useEffect(() => {
-    // dispatch({ type: PRODUCT_CREATE_RESET });
+    dispatch({ type: PRODUCT_CREATE_RESET });
 
     if (!userInfo.user.is_admin) {
       history.push("/login");
     }
 
     if (successCreate) {
-      history.push(`/admin/product/${createdProduct.id}/edit`);
+      history.push(`/admin/product/${createdProduct.slug}/edit`);
     } else {
       dispatch(listProducts("", pageNumber));
     }
@@ -57,7 +61,7 @@ const ProductListScreen = ({ history, match }) => {
   ]);
 
   const createProductHandler = () => {
-    // dispatch(createProduct());
+    dispatch(createProduct());
   };
 
   const deleteHandler = (id) => {
@@ -107,7 +111,7 @@ const ProductListScreen = ({ history, match }) => {
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>
-                    <LinkContainer to={`/admin/product/${product.id}/edit`}>
+                    <LinkContainer to={`/admin/product/${product.slug}/edit`}>
                       <Button variant="light" className="btn-sm">
                         <i className="fas fa-edit"></i>
                       </Button>
