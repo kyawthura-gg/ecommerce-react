@@ -18,6 +18,10 @@ import UserEditScreen from "./pages/admin/UserEditScreen";
 import ProductListScreen from "./pages/admin/ProudctListScreen";
 import ProductEditScreen from "./pages/admin/ProductEditScreen";
 import OrderListScreen from "./pages/admin/OrderListScreen";
+import CategoryListScreen from "./pages/admin/CategoryListScreen";
+import CategoryEditScreen from "./pages/admin/CategoryEditScreen";
+import SubCategoryListScreen from "./pages/admin/SubCategoryListScreen";
+import SubCategoryEditScreen from "./pages/admin/SubCategoryEditScreen";
 
 function App() {
   return (
@@ -26,6 +30,19 @@ function App() {
         <Header />
         <main className="py-3">
           <Container>
+            <Route
+              path="/admin/subCategory/:slug/edit"
+              component={SubCategoryEditScreen}
+            />
+            <Route
+              path="/admin/subCategorylist"
+              component={SubCategoryListScreen}
+            />
+            <Route
+              path="/admin/category/:slug/edit"
+              component={CategoryEditScreen}
+            />
+            <Route path="/admin/categorylist" component={CategoryListScreen} />
             <Route path="/admin/orderlist" component={OrderListScreen} />
             <Route path="/admin/user/:id/edit" component={UserEditScreen} />
             <Route path="/admin/userlist" component={UserListScreen} />
