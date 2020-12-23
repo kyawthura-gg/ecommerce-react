@@ -33,8 +33,6 @@ const UserEditScreen = ({ match, history }) => {
       history.push("/admin/userlist");
     } else {
       if (!user.name || user.id !== userId) {
-        console.log(typeof user.id);
-        console.log(typeof userId);
         dispatch(getUserDetails(userId));
       } else {
         setName(user.name);
