@@ -17,10 +17,7 @@ import {
 } from "../actions/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import {
-  PRODUCT_CREATE_RESET,
-  PRODUCT_CREATE_REVIEW_RESET,
-} from "../constants/productConstants";
+import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 
 const ProductScreen = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -45,7 +42,11 @@ const ProductScreen = ({ match, history }) => {
       setRating(0);
       setComment("");
     }
-    if (!product.id || product.slug !== match.params.slug) {
+    if (
+      successProductReview ||
+      !product.id ||
+      product.slug !== match.params.slug
+    ) {
       dispatch(listProductDetails(match.params.slug));
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
     }
