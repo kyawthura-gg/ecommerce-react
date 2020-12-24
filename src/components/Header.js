@@ -5,6 +5,7 @@ import { logout } from "../actions/userActions";
 import { LinkContainer } from "react-router-bootstrap";
 import { Route } from "react-router-dom";
 import SearchBox from "./SearchBox";
+import Category from "./Category";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,13 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar
+        bg="primary"
+        variant="dark"
+        expand="lg"
+        collapseOnSelect
+        className="py-2"
+      >
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>DemoShop</Navbar.Brand>
@@ -70,6 +77,7 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <Category />
     </header>
   );
 };
