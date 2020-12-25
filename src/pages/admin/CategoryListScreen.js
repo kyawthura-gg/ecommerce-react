@@ -37,7 +37,7 @@ function CategoryListScreen({ history }) {
       history.push(`/admin/category/${category.slug}/edit`);
     }
     dispatch(listCategories());
-  }, [dispatch, history, userInfo, successDelete, successCreate]);
+  }, [dispatch, history, userInfo, category, successDelete, successCreate]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
