@@ -22,6 +22,7 @@ import CategoryListScreen from "./pages/admin/CategoryListScreen";
 import CategoryEditScreen from "./pages/admin/CategoryEditScreen";
 import SubCategoryListScreen from "./pages/admin/SubCategoryListScreen";
 import SubCategoryEditScreen from "./pages/admin/SubCategoryEditScreen";
+import CategoryScreen from "./pages/CategoryScreen";
 
 function App() {
   return (
@@ -69,6 +70,7 @@ function App() {
               path="/admin/product/:id/edit"
               component={ProductEditScreen}
             />
+            <Route path="/category/:slug" component={CategoryScreen} exact />
             <Route path="/search/:keyword" component={HomeScreen} exact />
             <Route path="/page/:pageNumber" component={HomeScreen} exact />
             <Route

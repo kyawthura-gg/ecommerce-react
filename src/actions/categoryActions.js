@@ -15,6 +15,9 @@ import {
   CATEGORY_UPDATE_REQUEST,
   CATEGORY_UPDATE_SUCCESS,
   CATEGORY_UPDATE_FAIL,
+  CATEGORY_PRODUCT_LIST_REQUEST,
+  CATEGORY_PRODUCT_LIST_SUCCESS,
+  CATEGORY_PRODUCT_LIST_FAIL,
 } from "../constants/categoryConstans";
 
 export const listCategories = () => async (dispatch) => {
@@ -147,6 +150,27 @@ export const updateCategory = (category) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: CATEGORY_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const listCategoryProducts = (category = "", pageNumber = "") => async (
+  dispatch
+) => {
+  try {
+    dispatch({ type: CATEGORY_PRODUCT_LIST_REQUEST });
+
+    const { data } = await axios.get(
+      `/api/categories/products?category=${category}&pageNumber=${pageNumber}`
+    );
+    dispatch({ type: CATEGORY_PRODUCT_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: CATEGORY_PRODUCT_LIST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
