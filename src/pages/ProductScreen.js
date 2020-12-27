@@ -44,13 +44,13 @@ const ProductScreen = ({ match, history }) => {
     }
     if (
       successProductReview ||
-      !product.id ||
+      !product ||
       product.slug !== match.params.slug
     ) {
       dispatch(listProductDetails(match.params.slug));
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
     }
-  }, [dispatch, match, successProductReview]);
+  }, [dispatch, match, product, successProductReview]);
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.slug}?qty=${qty}`);

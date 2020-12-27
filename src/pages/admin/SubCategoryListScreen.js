@@ -37,7 +37,7 @@ function SubCategoryListScreen({ history }) {
       history.push(`/admin/subCategory/${subCategory.slug}/edit`);
     }
     dispatch(listSubCategories());
-  }, [dispatch, history, userInfo, successDelete, successCreate]);
+  }, [dispatch, history, userInfo, subCategory, successDelete, successCreate]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {

@@ -112,6 +112,7 @@ const SubCategoryEditScreen = ({ match, history }) => {
                 <Form.Control
                   as="select"
                   onChange={(e) => setCategoryId(e.target.value)}
+                  value={categoryId}
                 >
                   {categories.map((category) => (
                     <option key={category.id} value={category.id}>
