@@ -20,7 +20,11 @@ const LoginScreen = ({ location, history }) => {
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect);
+      if (userInfo.user.is_admin) {
+        window.location.replace("/admin/dashboard");
+      } else {
+        history.push(redirect);
+      }
     }
   }, [history, userInfo, redirect]);
 
