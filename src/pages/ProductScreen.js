@@ -18,6 +18,7 @@ import {
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
+import { IMAGE_ROUTE } from "../constants/imageConstants";
 
 const ProductScreen = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -73,7 +74,11 @@ const ProductScreen = ({ match, history }) => {
         <>
           <Row>
             <Col md={6}>
-              <Image src={product.image} alt={product.name} fluid />
+              <Image
+                src={IMAGE_ROUTE + product.image}
+                alt={product.name}
+                fluid
+              />
             </Col>
             <Col md={3}>
               <ListGroup variant="flush">

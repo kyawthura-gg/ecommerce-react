@@ -10,7 +10,12 @@ import {
   listProductDetails,
   updateProduct,
 } from "../../actions/productActions";
-import { PRODUCT_UPDATE_RESET } from "../../constants/productConstants";
+import {
+  PRODUCT_DETAILS_RESET,
+  PRODUCT_UPDATE_RESET,
+} from "../../constants/productConstants";
+import { listCategories } from "../../actions/categoryActions";
+import { listSubCategories } from "../../actions/subCategoryActions";
 
 const ProductEditScreen = ({ match, history }) => {
   const productSlug = match.params.id;
@@ -20,10 +25,12 @@ const ProductEditScreen = ({ match, history }) => {
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState("");
-  const [category, setCategory] = useState("");
+  const [categoryId, setCategoryId] = useState(0);
+  const [subCategoryId, setSubCategoryId] = useState();
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -37,12 +44,29 @@ const ProductEditScreen = ({ match, history }) => {
     success: successUpdate,
   } = productUpdate;
 
+  const subCategoryList = useSelector((state) => state.subCategoryList);
+  const {
+    loading: loadingSub,
+    error: errorSub,
+    categories: subCategories,
+  } = subCategoryList;
+
+  const categoryList = useSelector((state) => state.categoryList);
+  const {
+    loading: loadingCategory,
+    error: errorCategory,
+    categories,
+  } = categoryList;
+
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
-      history.push("/admin/productlist");
+      dispatch({ type: PRODUCT_DETAILS_RESET });
+      history.push("/admin/product");
     } else {
       if (!product || product.slug !== productSlug) {
+        dispatch(listCategories());
+        dispatch(listSubCategories());
         dispatch(listProductDetails(productSlug));
       } else {
         setProductId(product.id);
@@ -50,9 +74,11 @@ const ProductEditScreen = ({ match, history }) => {
         setPrice(product.price);
         setImage(product.image);
         setBrand(product.brand);
-        setCategory(product.category_id);
-        setCountInStock(product.countInStock);
+        setCategoryId(product.category_id);
+        setSubCategoryId(product.sub_category_id);
+        setCountInStock(product.count_stock);
         setDescription(product.description);
+        setIsVisible(product.is_visible);
       }
     }
   }, [dispatch, history, productSlug, product, successUpdate]);
@@ -93,16 +119,18 @@ const ProductEditScreen = ({ match, history }) => {
         price,
         image,
         brand,
-        category_id: category,
+        category_id: categoryId,
         count_stock: countInStock,
         description,
+        is_visible: isVisible,
+        sub_category_id: subCategoryId,
       })
     );
   };
 
   return (
     <>
-      <Link to="/admin/productlist" className="btn btn-light my-3">
+      <Link to="/admin/product" className="btn btn-light my-3">
         Go Back
       </Link>
       <FormContainer>
@@ -168,15 +196,6 @@ const ProductEditScreen = ({ match, history }) => {
                 onChange={(e) => setCountInStock(e.target.value)}
               ></Form.Control>
             </Form.Group>
-            <Form.Group controlId="category">
-              <Form.Label>Category</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
             <Form.Group controlId="description">
               <Form.Label>description</Form.Label>
               <Form.Control
@@ -185,6 +204,50 @@ const ProductEditScreen = ({ match, history }) => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
+            </Form.Group>
+            {errorCategory || loadingCategory ? (
+              <Loader />
+            ) : (
+              <Form.Group controlId="category">
+                <Form.Label>Main Category</Form.Label>
+                <Form.Control
+                  as="select"
+                  onChange={(e) => setCategoryId(e.target.value)}
+                  value={categoryId}
+                >
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </Form.Control>
+              </Form.Group>
+            )}
+            {errorSub || loadingSub ? (
+              <Loader />
+            ) : (
+              <Form.Group controlId="subCategory">
+                <Form.Label>Sub Category</Form.Label>
+                <Form.Control
+                  as="select"
+                  onChange={(e) => setSubCategoryId(e.target.value)}
+                  value={subCategoryId}
+                >
+                  {subCategories.map((subCategory) => (
+                    <option key={subCategory.id} value={subCategory.id}>
+                      {subCategory.name}
+                    </option>
+                  ))}
+                </Form.Control>
+              </Form.Group>
+            )}
+            <Form.Group controlId="isvisible">
+              <Form.Check
+                type="checkbox"
+                label="Visible In Menu"
+                checked={isVisible}
+                onChange={(e) => setIsVisible(e.target.checked)}
+              ></Form.Check>
             </Form.Group>
             <Button type="submit" variant="primary">
               Update

@@ -97,8 +97,8 @@ const ProductListScreen = ({ history, match }) => {
                 <th>ID</th>
                 <th>NAME</th>
                 <th>PRICE</th>
-                <th>CATEGORY</th>
-                <th>BRAND</th>
+                <th>VISIBLE</th>
+                <th>STOCK</th>
                 <th></th>
               </tr>
             </thead>
@@ -108,8 +108,14 @@ const ProductListScreen = ({ history, match }) => {
                   <td>{product.id}</td>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
-                  <td>{product.category}</td>
-                  <td>{product.brand}</td>
+                  <td className="text-center">
+                    {product.is_visible ? (
+                      <i className="fas fa-check text-green-500"></i>
+                    ) : (
+                      <i className="fas fa-times text-red-400"></i>
+                    )}
+                  </td>
+                  <td>{product.count_stock}</td>
                   <td>
                     <LinkContainer to={`/admin/product/${product.slug}/edit`}>
                       <Button variant="light" className="btn-sm">

@@ -24,13 +24,24 @@ import {
 } from "../constants/productConstants";
 
 export const listProducts = (keyword = "", pageNumber = "") => async (
-  dispatch
+  dispatch,
+  getState
 ) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
-
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const accessToken = userInfo ? userInfo.access_token : "";
+    const config = {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
     const { data } = await axios.get(
-      `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+      `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`,
+      config
     );
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
