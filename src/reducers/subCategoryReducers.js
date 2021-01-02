@@ -8,6 +8,7 @@ import {
   SUB_CATEGORY_DELETE_SUCCESS,
   SUB_CATEGORY_DETAILS_FAIL,
   SUB_CATEGORY_DETAILS_REQUEST,
+  SUB_CATEGORY_DETAILS_RESET,
   SUB_CATEGORY_DETAILS_SUCCESS,
   SUB_CATEGORY_LIST_FAIL,
   SUB_CATEGORY_LIST_REQUEST,
@@ -58,7 +59,10 @@ export const subCategoryCreateReducer = (state = {}, action) => {
   }
 };
 
-export const subCategoryDetailsReducer = (state = { subCategory: {} }, action) => {
+export const subCategoryDetailsReducer = (
+  state = { subCategory: {} },
+  action
+) => {
   switch (action.type) {
     case SUB_CATEGORY_DETAILS_REQUEST:
       return { loading: true };
@@ -66,6 +70,8 @@ export const subCategoryDetailsReducer = (state = { subCategory: {} }, action) =
       return { loading: false, subCategory: action.payload };
     case SUB_CATEGORY_DETAILS_FAIL:
       return { loading: false, error: action.payload };
+    case SUB_CATEGORY_DETAILS_RESET:
+      return { subCategory: {} };
     default:
       return state;
   }

@@ -12,7 +12,10 @@ import { listCategories } from "../../actions/categoryActions";
 import FormContainer from "../../components/FormContainer";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { SUB_CATEGORY_UPDATE_REQUEST } from "../../constants/subCategoryConstans";
+import {
+  SUB_CATEGORY_DETAILS_RESET,
+  SUB_CATEGORY_UPDATE_REQUEST,
+} from "../../constants/subCategoryConstans";
 
 const SubCategoryEditScreen = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -37,9 +40,10 @@ const SubCategoryEditScreen = ({ match, history }) => {
   } = categoryList;
 
   useEffect(() => {
-    dispatch({ type: SUB_CATEGORY_UPDATE_REQUEST });
     if (updateSuccess) {
-      history.push("/admin/subCategorylist");
+      dispatch({ type: SUB_CATEGORY_UPDATE_REQUEST });
+      dispatch({ type: SUB_CATEGORY_DETAILS_RESET });
+      history.push("/admin/sub-category");
     }
     if (!subCategory || subCategory.slug !== subCategorySlug) {
       dispatch(detailsSubCategory(subCategorySlug));
@@ -71,7 +75,7 @@ const SubCategoryEditScreen = ({ match, history }) => {
           <h2>Edit Sub Category</h2>
         </Col>
         <Col className="text-right">
-          <Link to="/admin/subCategorylist" className="btn btn-dark my-3">
+          <Link to="/admin/sub-category" className="btn btn-dark my-3">
             Go Back
           </Link>
         </Col>

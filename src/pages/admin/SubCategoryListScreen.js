@@ -34,7 +34,7 @@ function SubCategoryListScreen({ history }) {
       history.push("/login");
     }
     if (successCreate) {
-      history.push(`/admin/subCategory/${subCategory.slug}/edit`);
+      history.push(`/admin/sub-category/${subCategory.slug}/edit`);
     }
     dispatch(listSubCategories());
   }, [dispatch, history, userInfo, subCategory, successDelete, successCreate]);
@@ -97,7 +97,7 @@ function SubCategoryListScreen({ history }) {
                 <td>
                   <Link
                     className="btn"
-                    to={`/admin/subCategory/${subCategory.slug}/edit`}
+                    to={`/admin/sub-category/${subCategory.slug}/edit`}
                   >
                     <i className="fas fa-edit"></i>
                   </Link>
