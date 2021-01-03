@@ -1,14 +1,17 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { detailsCategory, updateCategory } from "../../actions/categoryActions";
 import FormContainer from "../../components/FormContainer";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { CATEGORY_UPDATE_REQUEST } from "../../constants/categoryConstans";
+import {
+  CATEGORY_DETAILS_RESET,
+  CATEGORY_UPDATE_REQUEST,
+} from "../../constants/categoryConstans";
 
 const CategoryEditScreen = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -25,9 +28,10 @@ const CategoryEditScreen = ({ match, history }) => {
   const { success: updateSuccess, error: updateError } = categoryUpdate;
 
   useEffect(() => {
-    dispatch({ type: CATEGORY_UPDATE_REQUEST });
     if (updateSuccess) {
-      history.push("/admin/categorylist");
+      dispatch({ type: CATEGORY_UPDATE_REQUEST });
+      dispatch({ type: CATEGORY_DETAILS_RESET });
+      history.push("/admin/category");
     }
     if (!category || category.slug !== categorySlug) {
       dispatch(detailsCategory(categorySlug));
@@ -46,16 +50,17 @@ const CategoryEditScreen = ({ match, history }) => {
   };
   return (
     <>
-      <Row>
-        <Col className="my-3">
-          <h2>Edit Category</h2>
-        </Col>
-        <Col className="text-right">
-          <Link to="/admin/categorylist" className="btn btn-dark my-3">
-            Go Back
-          </Link>
-        </Col>
-      </Row>
+      <div className="flex mb-4">
+        <Link
+          to="/admin/category"
+          className="bg-black text-white px-3.5 py-2.5 rounded hover:no-underline"
+        >
+          Go Back
+        </Link>
+        <div className="flex-auto text-center text-2xl text-black mb-2 ml-2">
+          Edit Category
+        </div>
+      </div>
       {updateError && <Message variant="danger">{updateError}</Message>}
       {loading ? (
         <Loader />
@@ -64,7 +69,7 @@ const CategoryEditScreen = ({ match, history }) => {
       ) : (
         <FormContainer>
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId="name">
+            <Form.Group controlId="slugName">
               <Form.Label>Slug Name</Form.Label>
               <Form.Control
                 type="text"

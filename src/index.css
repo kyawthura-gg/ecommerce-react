@@ -1,17 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 main {
   min-height: 80vh;
 }
-h1 {
-  font-size: 1.8rem;
-  padding: 1rem 0;
-}
-h2 {
-  font-size: 1.4rem !important;
-  padding: 0.5rem 0;
-}
-h3 {
-  padding: 1rem 0;
-}
+
 .rating span {
   margin: 0.1rem;
 }
@@ -21,28 +15,17 @@ h3 {
 .carousel-item.active {
   display: flex !important;
 }
+.carousel-indicators li {
+  background-color: #000 !important;
+  height: 6px !important;
+}
+.carousel-container {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-top: -16px;
+}
 .carousel-caption {
-  position: absolute;
-  top: 0;
-}
-
-.carousel-caption h2 {
-  color: #fff;
-}
-
-.carousel img {
-  height: 300px;
-  padding: 30px;
-  margin: 40px;
-  border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.carousel a {
-  margin: 0 auto;
-}
-@media (max-width: 900px) {
-  .carousel-caption h2 {
-    font-size: 2.5vw;
-  }
+  margin-top: 10px;
 }

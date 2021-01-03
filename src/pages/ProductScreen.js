@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  Button,
-  Col,
-  Image,
-  ListGroup,
-  Row,
-  Card,
-  Form,
-} from "react-bootstrap";
+import { Button, Col, ListGroup, Row, Card, Form } from "react-bootstrap";
 import Rating from "../components/Rating";
 import {
   createProductReview,
@@ -18,6 +10,7 @@ import {
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
+import { IMAGE_ROUTE } from "../constants/imageConstants";
 
 const ProductScreen = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -62,9 +55,11 @@ const ProductScreen = ({ match, history }) => {
   };
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
-        Go Back
-      </Link>
+      <div className="my-3">
+        <Link className="bg-black text-white px-3.5 py-2.5 rounded" to="/">
+          Go Back
+        </Link>
+      </div>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -72,8 +67,12 @@ const ProductScreen = ({ match, history }) => {
       ) : (
         <>
           <Row>
-            <Col md={6}>
-              <Image src={product.image} alt={product.name} fluid />
+            <Col md={6} className="h-76 w-100 mb-4">
+              <img
+                src={IMAGE_ROUTE + product.image}
+                alt={product.name}
+                className="h-full m-auto"
+              />
             </Col>
             <Col md={3}>
               <ListGroup variant="flush">
@@ -134,7 +133,7 @@ const ProductScreen = ({ match, history }) => {
                   <ListGroup.Item>
                     <Button
                       onClick={addToCartHandler}
-                      className="btn-block"
+                      className="btn-block rounded"
                       type="button"
                       disabled={product.count_stock === 0}
                     >
@@ -188,7 +187,11 @@ const ProductScreen = ({ match, history }) => {
                           onChange={(e) => setComment(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
-                      <Button type="submit" variant="primary">
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        className="rounded"
+                      >
                         Submit
                       </Button>
                     </Form>

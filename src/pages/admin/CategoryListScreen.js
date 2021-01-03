@@ -49,12 +49,17 @@ function CategoryListScreen({ history }) {
   };
   return (
     <>
-      <Row>
+      <Row className="mb-4">
         <Col>
-          <h1>Categories</h1>
+          <div className="text-2xl text-black mb-2 ml-2">Categories</div>
         </Col>
         <Col className="text-right">
-          <Button onClick={createHandler}>Create</Button>
+          <Button
+            onClick={createHandler}
+            className="bg-black text-white px-3.5 py-2.5 rounded"
+          >
+            Create
+          </Button>
         </Col>
       </Row>
       {error ? (

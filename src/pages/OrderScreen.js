@@ -62,9 +62,6 @@ const OrderScreen = ({ match, history }) => {
       script.type = "text/javascript";
       script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
       script.async = true;
-      script.onload = () => {
-        setSdkReady(true);
-      };
       document.body.appendChild(script);
     };
     if (!order || successPay || successDeliver || order.order_id !== orderId) {
@@ -74,7 +71,9 @@ const OrderScreen = ({ match, history }) => {
     }
 
     if (!window.paypal) {
-      addPayPalScript();
+      addPayPalScript().then(() => {
+        setSdkReady(true);
+      });
     } else {
       setSdkReady(true);
     }
@@ -213,7 +212,7 @@ const OrderScreen = ({ match, history }) => {
               {loadingDeliver && <Loader />}
               {userInfo &&
                 order.is_paid === 1 &&
-                userInfo.user.is_admin &&
+                userInfo.user.is_admin === 1 &&
                 !order.is_delivered && (
                   <ListGroup.Item>
                     <Button

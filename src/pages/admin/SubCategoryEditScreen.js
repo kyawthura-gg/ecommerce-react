@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -12,7 +12,10 @@ import { listCategories } from "../../actions/categoryActions";
 import FormContainer from "../../components/FormContainer";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { SUB_CATEGORY_UPDATE_REQUEST } from "../../constants/subCategoryConstans";
+import {
+  SUB_CATEGORY_DETAILS_RESET,
+  SUB_CATEGORY_UPDATE_REQUEST,
+} from "../../constants/subCategoryConstans";
 
 const SubCategoryEditScreen = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -37,9 +40,10 @@ const SubCategoryEditScreen = ({ match, history }) => {
   } = categoryList;
 
   useEffect(() => {
-    dispatch({ type: SUB_CATEGORY_UPDATE_REQUEST });
     if (updateSuccess) {
-      history.push("/admin/subCategorylist");
+      dispatch({ type: SUB_CATEGORY_UPDATE_REQUEST });
+      dispatch({ type: SUB_CATEGORY_DETAILS_RESET });
+      history.push("/admin/sub-category");
     }
     if (!subCategory || subCategory.slug !== subCategorySlug) {
       dispatch(detailsSubCategory(subCategorySlug));
@@ -66,16 +70,17 @@ const SubCategoryEditScreen = ({ match, history }) => {
   };
   return (
     <>
-      <Row>
-        <Col className="my-3">
-          <h2>Edit Sub Category</h2>
-        </Col>
-        <Col className="text-right">
-          <Link to="/admin/subCategorylist" className="btn btn-dark my-3">
-            Go Back
-          </Link>
-        </Col>
-      </Row>
+      <div className="flex mb-4">
+        <Link
+          to="/admin/sub-category"
+          className="bg-black text-white px-3.5 py-2.5 rounded hover:no-underline"
+        >
+          Go Back
+        </Link>
+        <div className="flex-auto text-center text-2xl text-black mb-2 ml-2">
+          Edit Sub Category
+        </div>
+      </div>
       {updateError && <Message variant="danger">{updateError}</Message>}
       {loading ? (
         <Loader />

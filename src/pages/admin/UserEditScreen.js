@@ -30,7 +30,7 @@ const UserEditScreen = ({ match, history }) => {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: USER_UPDATE_RESET });
-      history.push("/admin/userlist");
+      history.push("/admin/user");
     } else {
       if (!user.name || user.id !== userId) {
         dispatch(getUserDetails(userId));
@@ -49,11 +49,19 @@ const UserEditScreen = ({ match, history }) => {
 
   return (
     <>
-      <Link to="/admin/userlist" className="btn btn-light my-3">
-        Go Back
-      </Link>
+      <div className="flex mb-4">
+        <Link
+          to="/admin/user"
+          className="bg-black text-white px-3.5 py-2.5 rounded hover:no-underline"
+        >
+          Go Back
+        </Link>
+        <div className="flex-auto text-center text-2xl text-black mb-2 ml-2">
+          Edit User
+        </div>
+      </div>
+
       <FormContainer>
-        <h1>Edit User</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (
@@ -88,7 +96,7 @@ const UserEditScreen = ({ match, history }) => {
                 onChange={(e) => setIsAdmin(e.target.checked)}
               ></Form.Check>
             </Form.Group>
-            <Button type="submit" variant="primary">
+            <Button type="submit" variant="primary" className="rounded">
               Update
             </Button>
           </Form>
