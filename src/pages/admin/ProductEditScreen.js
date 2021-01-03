@@ -130,11 +130,18 @@ const ProductEditScreen = ({ match, history }) => {
 
   return (
     <>
-      <Link to="/admin/product" className="btn btn-light my-3">
-        Go Back
-      </Link>
+      <div className="flex mb-4">
+        <Link
+          to="/admin/product"
+          className="bg-black text-white px-3.5 py-2.5 rounded hover:no-underline"
+        >
+          Go Back
+        </Link>
+        <div className="font-bold flex-auto text-center text-2xl text-black mb-2 ml-2">
+          Edit Product
+        </div>
+      </div>
       <FormContainer>
-        <h1>Edit Product</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (

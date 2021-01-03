@@ -71,19 +71,18 @@ const ProductListScreen = ({ history, match }) => {
   };
   return (
     <>
-      <Row className="align-items-center">
+      <Row className="mb-4">
         <Col>
-          <h1>Products</h1>
+          <div className="text-2xl text-black mb-2 ml-2">Products</div>
         </Col>
         <Col className="text-right">
-          <Button className="my-3" onClick={createProductHandler}>
-            <i className="fas fa-plus"></i>Create Product
+          <Button className="rounded" onClick={createProductHandler}>
+            Create
           </Button>
         </Col>
       </Row>
-      {loadingDelete && <Loader />}
+      {loadingDelete || (loadingCreate && <Loader />)}
       {errorDelete && <Message variant="danger">{errorDelete}</Message>}
-      {loadingCreate && <Loader />}
       {errorCreate && <Message variant="danger">{errorCreate}</Message>}
       {loading ? (
         <Loader />

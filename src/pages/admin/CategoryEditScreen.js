@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { detailsCategory, updateCategory } from "../../actions/categoryActions";
@@ -50,16 +50,17 @@ const CategoryEditScreen = ({ match, history }) => {
   };
   return (
     <>
-      <Row>
-        <Col className="my-3">
-          <h2>Edit Category</h2>
-        </Col>
-        <Col className="text-right">
-          <Link to="/admin/category" className="btn btn-dark my-3">
-            Go Back
-          </Link>
-        </Col>
-      </Row>
+      <div className="flex mb-4">
+        <Link
+          to="/admin/category"
+          className="bg-black text-white px-3.5 py-2.5 rounded hover:no-underline"
+        >
+          Go Back
+        </Link>
+        <div className="flex-auto text-center text-2xl text-black mb-2 ml-2">
+          Edit Category
+        </div>
+      </div>
       {updateError && <Message variant="danger">{updateError}</Message>}
       {loading ? (
         <Loader />

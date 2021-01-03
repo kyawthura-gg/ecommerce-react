@@ -49,12 +49,14 @@ function SubCategoryListScreen({ history }) {
   };
   return (
     <>
-      <Row>
+      <Row className="mb-4">
         <Col>
-          <h1>Sub Categories</h1>
+          <div className="text-2xl text-black mb-2 ml-2">Sub Categories</div>
         </Col>
         <Col className="text-right">
-          <Button onClick={createHandler}>Create</Button>
+          <Button onClick={createHandler} className="rounded">
+            Create
+          </Button>
         </Col>
       </Row>
       {error ? (
