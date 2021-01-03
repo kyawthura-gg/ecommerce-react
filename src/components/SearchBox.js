@@ -13,7 +13,7 @@ const SearchBox = ({ history }) => {
   };
 
   return (
-    <form onSubmit={submitHandler} inline className="flex mr-2">
+    <form onSubmit={submitHandler} className="flex mr-2">
       <input
         type="text"
         name="q"
