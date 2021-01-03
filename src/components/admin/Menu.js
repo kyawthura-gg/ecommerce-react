@@ -52,7 +52,7 @@ export default function Menu({
     },
   ];
   return (
-    <div className="flex h-screen bg-gray-200">
+    <div className="flex bg-gray-200">
       <Transition
         show={isStatic || !isClosed}
         enter="transition-all duration-500"
@@ -135,34 +135,34 @@ export default function Menu({
       </Transition>
 
       <main className="flex-grow flex flex-col min-h-screen">
-        <header className="bg-white border-b h-14 flex items-center">
-          {!isStatic && (
-            <button
-              tabIndex="1"
-              aria-hidden={isClosed}
-              className="w-10 p-1"
-              aria-label="Open menu"
-              title="Open menu"
-              onClick={() => setClosed(false)}
-            >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button>
-          )}
-          {/* Profile dropdown  */}
-          <div className="ml-auto relative mr-4">
-            <div>
+        <header className="bg-white border-b flex items-center">
+          <div className="h-14 w-100">
+            {!isStatic && (
               <button
-                className="max-w-xs rounded-full flex items-center text-lg focus:outline-none"
+                tabIndex="1"
+                aria-hidden={isClosed}
+                className="w-10 p-1"
+                aria-label="Open menu"
+                title="Open menu"
+                onClick={() => setClosed(false)}
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
+            )}
+            {/* Profile dropdown  */}
+            <div className="relative mr-4">
+              <button
+                className="ml-auto mt-3 max-w-xs rounded-full flex items-center text-lg focus:outline-none"
                 id="user-menu"
                 aria-haspopup="true"
                 onClick={() => setIsOpenProfile(!isOpenProfile)}
@@ -170,24 +170,25 @@ export default function Menu({
                 <span className="sr-only">Open user menu</span>
                 <i className="fas fa-user"></i>
               </button>
-            </div>
-            {isOpenProfile && (
-              <div className="origin-top-right absolute z-20 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
-                <Link
-                  to="/admin/profile"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Your Profile
-                </Link>
 
-                <div
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
-                  onClick={logoutHandler}
-                >
-                  Sign out
+              {isOpenProfile && (
+                <div className="origin-top-right absolute z-20 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
+                  <Link
+                    to="/admin/profile"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Your Profile
+                  </Link>
+
+                  <div
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                    onClick={logoutHandler}
+                  >
+                    Sign out
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </header>
         {children}
