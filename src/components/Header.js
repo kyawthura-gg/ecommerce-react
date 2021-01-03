@@ -2,7 +2,7 @@ import React from "react";
 import { NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userActions";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import SearchBox from "./SearchBox";
 import Category from "./Category";
 import { useState } from "react";
@@ -28,16 +28,14 @@ const Header = () => {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <Link to="/">
-                  <img
-                    className="h-8 w-8"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                    alt="Workflow"
-                  />
+                  <i className="fas fa-store-alt text-3xl"></i>
                 </Link>
               </div>
               <div className="block">
                 <div className="ml-2 sm:ml-4 md:ml-24 flex items-baseline md:space-x-24">
-                  <SearchBox />
+                  <Route
+                    render={({ history }) => <SearchBox history={history} />}
+                  />
                 </div>
               </div>
             </div>
@@ -74,7 +72,7 @@ const Header = () => {
                   )}
                   {userInfo && userInfo.user.is_admin === 1 && (
                     <div
-                      className="cursor-pointer py-2.5 px-2 text-black mt-2"
+                      className="cursor-pointer py-2 px-2 text-black"
                       onClick={redirectAdminHanlder}
                     >
                       Admin
@@ -170,7 +168,7 @@ const Header = () => {
               </>
             )}
             {userInfo && userInfo.user.is_admin === 1 && (
-              <div className="mt-3 px-2 space-y-1 z-20">
+              <div className="cursor-pointer mt-3 px-2 space-y-1 z-20">
                 <div onClick={redirectAdminHanlder}>Admin</div>
               </div>
             )}
