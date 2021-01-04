@@ -28,7 +28,7 @@ const HomeScreen = ({ match }) => {
       {!keyword ? (
         <ProductCarousel />
       ) : (
-        <Link to="/" className="btn btn-light">
+        <Link to="/" className="bg-black text-white px-3.5 py-2.5 rounded">
           Go Back
         </Link>
       )}

@@ -162,7 +162,7 @@ export default function Menu({
             {/* Profile dropdown  */}
             <div className="relative mr-4">
               <button
-                className="ml-auto mt-3 max-w-xs rounded-full flex items-center text-lg focus:outline-none"
+                className="ml-auto -mt-5 md:mt-3 max-w-xs rounded-full flex items-center text-lg focus:outline-none"
                 id="user-menu"
                 aria-haspopup="true"
                 onClick={() => setIsOpenProfile(!isOpenProfile)}
