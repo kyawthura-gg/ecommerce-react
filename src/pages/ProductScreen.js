@@ -11,6 +11,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 import { IMAGE_ROUTE } from "../constants/imageConstants";
+import { formatNumber } from "../utils/formatNumber";
 
 const ProductScreen = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -67,11 +68,11 @@ const ProductScreen = ({ match, history }) => {
       ) : (
         <>
           <Row>
-            <Col md={6} className="h-76 w-100 mb-4">
+            <Col md={6} className="w-100 mb-0">
               <img
                 src={IMAGE_ROUTE + product.image}
                 alt={product.name}
-                className="h-full m-auto"
+                className="w-100 h-78 m-auto"
               />
             </Col>
             <Col md={3}>
@@ -85,7 +86,9 @@ const ProductScreen = ({ match, history }) => {
                     text={`${product.num_reviews} reviews`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                <ListGroup.Item>
+                  Price: ${formatNumber(product.price)}
+                </ListGroup.Item>
                 <ListGroup.Item>
                   Description: ${product.description}
                 </ListGroup.Item>
@@ -97,7 +100,7 @@ const ProductScreen = ({ match, history }) => {
                   <ListGroup.Item>
                     <Row>
                       <Col>Price:</Col>
-                      <Col>${product.price}</Col>
+                      <Col>${formatNumber(product.price)}</Col>
                     </Row>
                   </ListGroup.Item>
                   <ListGroup.Item>

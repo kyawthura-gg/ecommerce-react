@@ -5,6 +5,7 @@ import {
   CART_SAVE_PAYMENT_METHOD,
   CART_SAVE_SHIPPING_ADDRESS,
 } from "../constants/cartConstants";
+import { formatNumber } from "../utils/formatNumber";
 
 export const addToCart = (slug, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/products/${slug}`);
@@ -15,7 +16,7 @@ export const addToCart = (slug, qty) => async (dispatch, getState) => {
       product: data.slug,
       name: data.name,
       image: data.image,
-      price: data.price,
+      price: formatNumber(data.price),
       count_stock: data.count_stock,
       qty,
     },

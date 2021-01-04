@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import Rating from "./Rating";
+import { formatNumber } from "../utils/formatNumber";
 
 const Product = ({ product }) => {
   return (
@@ -11,9 +12,7 @@ const Product = ({ product }) => {
       </Link>
       <Card.Body>
         <Link to={`/product/${product.slug}`}>
-          <Card.Title as="div">
-            <strong>{product.name}</strong>
-          </Card.Title>
+          <div className="leading-6 overflow-hidden h-12">{product.name}</div>
         </Link>
 
         <Card.Text as="div">
@@ -28,7 +27,7 @@ const Product = ({ product }) => {
             text={`${product.num_reviews} reviews`}
           />
         </Card.Text>
-        <Card.Text as="h3">${product.price}</Card.Text>
+        <Card.Text as="h3">${formatNumber(product.price)}</Card.Text>
       </Card.Body>
     </Card>
   );
