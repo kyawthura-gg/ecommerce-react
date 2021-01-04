@@ -6,6 +6,7 @@ import Message from "./Message";
 import { useDispatch, useSelector } from "react-redux";
 import { listTopProducts } from "../actions/productActions";
 import { IMAGE_ROUTE } from "../constants/imageConstants";
+import { formatNumber } from "../utils/formatNumber";
 
 const ProductCarousel = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const ProductCarousel = () => {
       prevIcon={<i className="fas fa-chevron-left text-black text-2xl"></i>}
     >
       {products.map((product) => (
-        <Carousel.Item key={product.slug}>
+        <Carousel.Item key={product.id}>
           <div className="flex">
             <div className="flex-none relative">
               <img
@@ -45,7 +46,7 @@ const ProductCarousel = () => {
                 <div className="flex flex-wrap">
                   <div className="text-lg ml-1 text-black">from</div>
                   <div className="ml-2 text-black text-2xl sm:text-4xl">
-                    ${product.price}
+                    ${formatNumber(product.price)}
                   </div>
                 </div>
                 <div className="mt-12">

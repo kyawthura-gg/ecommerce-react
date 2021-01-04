@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,57 +14,94 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
+# Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Register
 
-### `yarn build`
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/1-register.png">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Login
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/2-login.png">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Home
 
-### `yarn eject`
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/3-home.png">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Product Details
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/4-p-details.png">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Category & Sub Category
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/5-category-subcategory.png">
 
-## Learn More
+## Search by keywords
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/6-search.png">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Cart
 
-### Code Splitting
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/7-cart.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Profile
 
-### Analyzing the Bundle Size
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/8-profile.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Order Details & Payment
 
-### Making a Progressive Web App
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/9-order-payment.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Review Product
 
-### Advanced Configuration
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/10-review-p.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Admin Dashboard
 
-### Deployment
+## User List
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/a-0.png">
 
-### `yarn build` fails to minify
+## User Edit
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/a-1.png">
+
+## Sub Category List
+
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/a-2.png">
+
+## Sub Category Edit
+
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/a-3.png">
+
+## Product Edit
+
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/a-4.png">
+
+## Mark Deliver Order
+
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/a-5.png">
+
+## Sub Category Edit
+
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/a-3.png">
+
+# Mobile Layout
+
+## Home
+
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/m-1.png">
+
+## Product Details
+
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/m-2.png">
+
+# Admin Mobile Layout
+
+## Menu
+
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/m-3.png">
+
+## Lists
+
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/m-4.png">

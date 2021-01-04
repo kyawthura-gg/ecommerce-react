@@ -28,9 +28,11 @@ const CategoryScreen = ({ match }) => {
       {!slug ? (
         <ProductCarousel />
       ) : (
-        <Link to="/" className="btn btn-light">
-          Go Back
-        </Link>
+        <div className="mb-4">
+          <Link to="/" className="bg-black text-white px-3.5 py-2.5 rounded">
+            Go Back
+          </Link>
+        </div>
       )}
       <h1>Latest Products</h1>
       {loading ? (
