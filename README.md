@@ -34,7 +34,7 @@ You will also see any lint errors in the console.
 
 ## Category & Sub Category
 
-<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/5-category-subcategory.png">
+<img src="https://raw.githubusercontent.com/kyawthura-gg/ecommerce-react/master/screenshots/5-category-subcateogry.png">
 
 ## Search by keywords
 
